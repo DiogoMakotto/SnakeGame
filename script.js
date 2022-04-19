@@ -8,6 +8,10 @@ snake[0] = {
 }
 
 let direction ="right";
+let food ={
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
 
 function criarBG() {
     context.fillStyle = "lightgreen";
@@ -19,6 +23,11 @@ function criandocobra(){
         context.fillStyle = "green";
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
+}
+
+function desenhoComida(){
+    context.fillStyle = "red";
+    context.fillRect(food.x, food.y, box, box);
 }
 
 document.addEventListener('keydown', update) //quando um evento acontece, ele detecta e chama uma função
@@ -38,6 +47,7 @@ function iniciarJogo(){
 
     criarBG();
     criandocobra();
+    desenhoComida();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
